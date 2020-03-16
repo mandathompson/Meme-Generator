@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Meme Generator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form>
+            <input type="text" name="name" class="question" id="top-text" required autocomplete="off" />
+            <label for="nme"><span>Text For Top</span></label>
+            <label>Text size: </label><input type="range" id="top-text-size-input" min="0.05" max="0.25" value="0.15" step="0.01">
+
+            <textarea name="message" rows="2" class="question" id="bottom-text" required autocomplete="off"></textarea>
+            <label for="msg"><span>Text For Bottom</span></label>
+            <label>Text size: </label><input type="range" id="bottom-text-size-input" min="0.05" max="0.25" value="0.15" step="0.01">
+        </form>
+        <div>
+            <input type="file" id="image-input" accept="image/*">
+            <form method="get" action="http://www.google.com/search" class="search-container">
+
+                <input type="text"   name="q" size="25" placeholder="Or search for an image.."
+                maxlength="255" value="" />
+                <button type="submit">Search</button>    
+            </form>
+        </div>
+        <div>
+            <button id="generate-btn">Generate Your Meme!</button>
+        </div>
+
+        <div id="canvas"  class="search-container">
+            <button type="submit" id="deleteMemes">Clear Meme</button>   
+            <canvas id="meme-canvas" title="Right click -> &quot;Save image as...&quot;"></canvas>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
