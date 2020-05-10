@@ -19,7 +19,6 @@ let topTextInput, bottomTextInput, topTextSizeInput, bottomTextSizeInput, imageI
 
     canvas.width = canvas.height = 0;
 
-    // Generate button click listener
     generateBtn.addEventListener('click', function () {
         reader.readAsDataURL(imageInput.files[0]);
         reader.onload = function () {
@@ -33,38 +32,32 @@ let topTextInput, bottomTextInput, topTextSizeInput, bottomTextSizeInput, imageI
     function generateMeme (img, topText, bottomText, topTextSize, bottomTextSize) {
         let fontSize;
     
-        // Size canvas to image
+    
         canvas.width = img.width;
         canvas.height = img.height;
     
-        // Clear canvas
+  
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Draw main image
         ctx.drawImage(img, 0, 0);
     
-        // Set text style: white with black borders
         ctx.fillStyle = 'white';
         ctx.strokeStyle = 'black';
         ctx.textAlign = 'center';
     
-        // Top text font size
         fontSize = canvas.width * topTextSize;
         ctx.font = fontSize + 'px Impact';
         ctx.lineWidth = fontSize / 20;
-    
-        // Draw top text
+   
         ctx.textBaseline = 'top';
         topText.split('\n').forEach(function (t, i) {
             ctx.fillText(t, canvas.width / 2, i * fontSize, canvas.width);
             ctx.strokeText(t, canvas.width / 2, i * fontSize, canvas.width);
         });
     
-        // Bottom text font size
         fontSize = canvas.width * bottomTextSize;
         ctx.font = fontSize + 'px Impact';
         ctx.lineWidth = fontSize / 20;
     
-        // Draw bottom text
         ctx.textBaseline = 'bottom';
         bottomText.split('\n').reverse().forEach(function (t, i) { // .reverse() because it's drawing the bottom text from the bottom up
             ctx.fillText(t, canvas.width / 2, canvas.height - i * fontSize, canvas.width);
